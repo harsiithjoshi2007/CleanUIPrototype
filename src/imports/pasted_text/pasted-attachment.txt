@@ -1,0 +1,83 @@
+*PLAN FOR PROTOTYPE*
+
+626f6c742d63632d6167656e74**Plan: KSP Crime Intelligence Platform — Interactive UI Prototype**
+
+This is an interactive UI prototype (front-end focused with mock data and simulated AI) for the KSP Hackathon. It centers on three "devastating demo" features as the headline experience, wrapped in the broader 10-pillar platform framework. Since this is a 24h hackathon prototype, we will use realistic synthetic data and simulated AI responses (with clear "simulated" labeling) rather than wiring live NLP models — the visual impact and workflow is what wins judges.
+
+**1. Project Foundation & Design System**
+
+- Set up routing in `src/App.tsx` with a sidebar navigation shell (Dashboard, Narrative Detector, Network Analyzer, Timeline Reconciler, Conversational AI, Crime Patterns, Offender Profiles, Financial Links, Forecasting, Governance)
+- Establish a dark, investigative-themed design system in `tailwind.config.js` and `src/index.css` — deep slate/charcoal base, amber/cyan accents (NO purple/indigo), monospace accents for data, evidence-trail styling
+- Create a shared mock data layer in `src/data/mockData.ts` — synthetic FIRs, accused persons, victims, locations, witness statements, timestamps, financial transactions, and a criminal network graph
+- Build reusable UI primitives: `EvidenceCard`, `ContradictionBadge`, `ConfidenceMeter`, `SourceCitation`, `TimelineRail`, `GraphCanvas`, `ChatBubble`, `RoleBadge`
+- Configure Lucide React icons throughout for a consistent visual language
+
+**2. Core Feature #1 — Narrative Inconsistency Detector (Hero Demo)**
+
+- Build a two-pane statement input view where users paste/select two witness statements (pre-loaded with a realistic robbery case)
+- Create a simulated claim-extraction view that highlights extracted claims (who, what, when, where, weapon, clothing) from each statement with color-coded chips
+- Render a contradiction matrix grid comparing claims side-by-side, with red/amber/green cells and exact quoted text citations from each statement
+- Add a "Contradiction Severity Score" and an evidence-trail panel showing which sentences conflict and the inferred reliability of each witness
+- Include a one-click "Load Demo Case" button that pre-fills everything so the demo is instant
+
+**3. Core Feature #2 — Criminal Network Fragility Analyzer**
+
+- Build an interactive force-directed graph (Cytoscape.js or D3-style SVG) showing a synthetic organized crime network (accused, associates, locations, financial links)
+- Compute and display a "Fragility Ranking" — nodes ranked by betweenness centrality / arrest impact, with a simulated NetworkX-style score beside each node
+- Add a "Simulate Arrest" interaction: click a node, watch the network re-collapse, disconnected subgraphs fade, and a ranked "arrest this person first to collapse the network" action list updates
+- Show before/after network cohesion metrics (connectivity, average path length, remaining cluster count)
+- Include a side panel with offender cards, role in network, and recommended priority
+
+**4. Core Feature #3 — Forensic Timeline Reconciler**
+
+- Build a multi-source timeline view (CCTV, witness statements, phone pings, digital logs) for a pre-loaded complex case
+- Auto-flag timestamp conflicts with visual conflict flags and a "Source Confidence" weighting (CCTV > phone ping > witness recall)
+- Render a unified reconciled timeline with the system's best-guess correct ordering and an explanation panel for each conflict resolution
+- Add interactive controls to toggle sources on/off and watch the reconciled timeline rebuild live
+- Show a "Confidence Score" per event and a discrepancy summary at the top
+
+**5. Conversational Crime Intelligence Interface**
+
+- Build a chat interface with a simulated context-aware AI assistant that answers natural language queries about FIRs, accused, victims, locations, investigation status
+- Pre-seed suggested queries ("Show all robberies in District X last month", "Who are the repeat offenders in this network?", "Summarize FIR #4521")
+- Simulate follow-up context retention (assistant references prior question)
+- Add a "Download Conversation as PDF" button (client-side PDF generation) and a language toggle (English / Kannada) with pre-translated canned responses
+- Add a voice interaction button using the Web Speech API (speech-to-text input) with graceful fallback messaging
+
+**6. Crime Pattern, Sociological & Offender Profiling Views**
+
+- Crime Patterns: heatmap / choropleth of crime hotspots across districts, trend lines over time, seasonal and event-based pattern cards
+- Sociological Insights: demographic breakdown charts (age, gender, socio-economic) with correlation cards linking crime to urbanization/migration/economic stress
+- Offender Profiling: repeat offender list with risk scores, behavioral/MO analysis, and similar-case recommendations
+- Use a lightweight charting approach (custom SVG or recharts only if needed) to keep dependencies minimal
+
+**7. Financial Link Analysis & Crime Forecasting**
+
+- Financial Links: a transaction graph showing money trails between accused persons, shell accounts, and crime incidents, with suspicious-transaction flags
+- Crime Forecasting: an "Early Warning" dashboard with emerging hotspot predictions, gang activity alerts, and a confidence/explanation panel for each alert
+- Each alert links back to evidence and source data for explainability
+
+**8. Explainable AI, Governance & Role-Based Access**
+
+- Every AI-driven insight panel includes a "Why this?" expandable evidence trail citing the source records, rules, and confidence
+- Build a role switcher (Investigator, Analyst, Supervisor, Policymaker) in the header that changes visible modules and data redaction (e.g., PII masked for Analyst)
+- Add an audit log panel showing user actions with timestamps and a "Compliance" badge section
+- Include a clear "Simulated AI / Synthetic Data" banner so the prototype is honest about its demo nature
+
+**9. Dashboard Landing & Polish**
+
+- Build a hero landing dashboard that surfaces all three core features as prominent cards with one-click entry, plus KPI tiles (active cases, flagged contradictions, top network targets, emerging hotspots)
+- Add smooth transitions, loading skeletons, and responsive layout for projector/laptop demo scenarios
+- Final pass on visual cohesion: consistent spacing, typography, iconography, and no purple/indigo hues
+
+**Summary of Approach**
+
+The plan front-loads the three "devastating demo" features so the opening minutes of any judge walkthrough land maximum impact, then layers the full 10-pillar KSP platform around them for completeness. It uses a dark investigative design system, synthetic data, and clearly-labeled simulated AI to stay achievable in 24h while looking production-worthy. Role-based access, explainability trails, and PDF/voice/multi-language touches round out the hackathon requirements without over-engineering.
+
+A few clarifying questions before we move to build mode:
+
+1. Should the conversational AI use a real LLM API if a key is available, or keep it fully simulated with canned responses for a reliable offline demo?
+2. For the criminal network graph, do you prefer Cytoscape.js (richer graph features) or a hand-rolled D3/SVG approach (fewer dependencies, more visual control)?
+3. Should Kannada support be real translated canned responses, or a transliterated/placeholder toggle to save time?
+
+When you're ready, switch back to "build" mode and click "Implement this plan" to proceed.
