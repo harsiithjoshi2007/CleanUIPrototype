@@ -1,11 +1,24 @@
+# CleanUIPrototype 🚀
 
-  # Clean UI Prototype
+A modern, highly optimized UI dashboard prototype featuring clean typography, glassmorphism visual effects, and a responsive layout built with pure HTML5, CSS3, and JavaScript.
 
-  This is a code bundle for Clean UI Prototype. The original project is available at https://www.figma.com/design/u8Ws5qsYqIMn2rNFTwe6kd/Clean-UI-Prototype.
+---
 
-  ## Running the code
+## ✨ Key Features
 
-  Run `npm i` to install the dependencies.
+- **Glassmorphism Aesthetic:** Modern frosted-glass depth effects using `backdrop-filter` and customizable opacity.
+- **Dynamic Controls:** Real-time opacity sliders and backdrop blur toggles via standard CSS Custom Properties.
+- **Pure Web Stack:** Built without external JavaScript frameworks for lightweight, high-performance rendering.
+- **Responsive Grid:** Seamless adjustments for mobile, tablet, and desktop viewports.
 
-  Run `npm run dev` to start the development server.
-  
+---
+
+## 📁 Repository Structure
+
+```text
+CleanUIPrototype/
+│
+├── index.html       # Main HTML layout structure
+├── style.css        # Custom CSS variables, glass effects, and layout grid
+├── script.js        # DOM interaction, dynamic styles, and live simulations
+└── README.md        # Documentation and setup instructions
